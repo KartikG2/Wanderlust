@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <h3>Edit your Listing</h3>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+
+        
+            <form method="post" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="title"  class="form-label">Title</label>
+                    <input name="listing[title]" value="<%=listing.title %>" type="text" class="form-control" required>
+                    <div class="valid-feedback">Title looks good!</div>
+                    <div class="invalid-feedback">Provide a good title</div>
+                </div> 
+                <div class="mb-3">
+                    <label for="description"  class="form-label">Description</label>
+                    <textarea name="listing[description]"  type="text" class="form-control" required><%=listing.description%></textarea>
+                    <div class="invalid-feedback">Please provide some information</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Image"  class="form-label">Image</label>
+                    <input name="listing[Image]"  value="<%=listing.Image%>" type="text" class="form-control" required>
+                    <div class="invalid-feedback">Provide a valid link</div>
+                </div> 
+            
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price"  class="form-label">Price</label>
+                        <input name="listing[price]"  value="<%=listing.price %>" type="number" class="form-control" required>
+                        <div class="invalid-feedback">Provide a valid price</div>
+                    </div> 
+                    
+                    <div class="mb-3 col-md-8">
+                        <label for="country"  class="form-label">Country</label>
+                        <input name="listing[country]"  value="<%=listing.country %>" type="text" class="form-control" required> 
+                        <div class="invalid-feedback">Provide a valid country name</div>
+                    </div>
+
+                </div>
+                
+                <div class="mb-3">
+                    <label for="location"  class="form-label">Location</label>
+                    <input name="listing[location]"  value="<%=listing.location %>" type="text" class="form-control" required> 
+                    <div class="invalid-feedback">Provide a valid location</div>
+                </div>
+                
+                <button class="btn btn-dark Edit-btn mt-3 mb-3">Update</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
