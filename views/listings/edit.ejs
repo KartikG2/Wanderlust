@@ -5,7 +5,7 @@
         <div class="col-8 offset-2">
 
         
-            <form method="post" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation">
+            <form method="post" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title"  class="form-label">Title</label>
                     <input name="listing[title]" value="<%=listing.title %>" type="text" class="form-control" required>
@@ -17,12 +17,40 @@
                     <textarea name="listing[description]"  type="text" class="form-control" required><%=listing.description%></textarea>
                     <div class="invalid-feedback">Please provide some information</div>
                 </div>
-
                 <div class="mb-3">
-                    <label for="Image"  class="form-label">Image</label>
-                    <input name="listing[Image]"  value="<%=listing.Image%>" type="text" class="form-control" required>
-                    <div class="invalid-feedback">Provide a valid link</div>
-                </div> 
+                    Origianl image<br>
+                    <img src="<%= originalImageUrl %>" alt="">
+                </div>
+                
+                <div class="row">
+                    <div class="mb-3 col-md-8">
+                        <label for="Image"  class="form-label">Upload New Image</label>
+                        <input name="listing[image]" type="file" class="form-control">
+                        <div class="invalid-feedback">Provide a valid link</div>
+                    </div>
+                    <div class="mb-3 col-md-4">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="listing[category]">
+                          <option selected>Rooms</option>
+                                <option value="Castles">Castles</option>
+                                <!-- <option value="Rooms">Rooms</option> -->
+                                <option value="Amazing_Pool">Amazing Pools</option>
+                                <option value="Hotels">Hotels</option>
+                                <option value="Bed_Breakfasts">Bed&Breakfasts</option>
+                                <option value="Farms">Farms</option>
+                                <option value="Mountain_views">Mountain Views</option>
+                                <option value="Arctic">Arctic</option>
+                                <option value="Igloos">Igloos</option>
+                                <option value="Skin_in">Skin-in/out</option>
+                                <option value="Top_cities">Top Cities</option>
+                                <option value="Camping">Camping</option>
+                                <option value="Historical">Historical</option>
+                                <option value="House_Boats">Houseboats</option>
+                                <option value="Towers">Towers</option>
+                        </select>
+                      </div>
+                </div>
+                
             
                 <div class="row">
                     <div class="mb-3 col-md-4">

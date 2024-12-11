@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const review = require("./review");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
+const { string } = require("joi");
 
 const listingSchema = new Schema({
     title : {
@@ -9,10 +10,9 @@ const listingSchema = new Schema({
         required : true,
     },
     description : String,
-    Image : {
-        type : String,
-        default:"https://media.istockphoto.com/id/476111648/photo/sunset-over-indian-ocean.jpg?s=1024x1024&w=is&k=20&c=FCiFLvocwhqLTAlQT-gNVh3Hj0TqLfc1gAEWRfJKnqg=",
-        set : (v) => v===""?"https://media.istockphoto.com/id/476111648/photo/sunset-over-indian-ocean.jpg?s=1024x1024&w=is&k=20&c=FCiFLvocwhqLTAlQT-gNVh3Hj0TqLfc1gAEWRfJKnqg=" : v,
+    image : {
+        url : String,
+        filename : String,
     },
     price : Number,
     location : String,
@@ -27,6 +27,11 @@ const listingSchema = new Schema({
         type : Schema.Types.ObjectId,
         ref : "User",
     },
+    category: {
+        type: String,
+        enum: ['Trending', 'Castles', 'Rooms','Amazing_Pool', 'Hotels', 'Bed_Breakfasts', 'Farm', 'Mountain_views', 'Arctic','Beachfront','Igloos','Ski_in','Top_cities','Camping','Historical','Houseboats','Towers'],
+    }
+  
 });
 
 listingSchema.post("findOneAndDelete",async(listing)=>{
